@@ -1,0 +1,21 @@
+<RCC>
+  <qresource>
+    <file>res.qrc</file>
+    <file>ico/back.ico</file>
+    <file>ico/combo.ico</file>
+    <file>ico/contact.ico</file>
+    <file>ico/down.ico</file>
+    <file>ico/drop.ico</file>
+    <file>ico/edit.ico</file>
+    <file>ico/eye.ico</file>
+    <file>ico/film.ico</file>
+    <file>ico/folder_download.ico</file>
+    <file>ico/heart.ico</file>
+    <file>ico/image.ico</file>
+    <file>ico/link.ico</file>
+    <file>ico/list.ico</file>
+    <file>ico/page.ico</file>
+    <file>ico/settings.ico</file>
+    <file>ico/head.jpg</file>
+  </qresource>
+</RCC>
