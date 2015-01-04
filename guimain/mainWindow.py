@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MainWindow.ui'
 #
-# Created: Sat Jan  3 13:50:53 2015
+# Created: Sun Jan  4 12:52:12 2015
 #      by: PyQt4 UI code generator 4.11.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -78,7 +78,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.btn_search)
         self.horizontalLayout_2.addLayout(self.horizontalLayout)
         self.lbl_pic = QtGui.QLabel(self.centralwidget)
-        self.lbl_pic.setGeometry(QtCore.QRect(425, -14, 321, 451))
+        self.lbl_pic.setGeometry(QtCore.QRect(430, -10, 321, 441))
         self.lbl_pic.setText(_fromUtf8(""))
         self.lbl_pic.setPixmap(QtGui.QPixmap(_fromUtf8(":/ico/lord-shiva.jpg")))
         self.lbl_pic.setScaledContents(True)
@@ -106,7 +106,7 @@ class Ui_MainWindow(object):
         self.txb_title.setObjectName(_fromUtf8("txb_title"))
         self.verticalLayout.addWidget(self.txb_title)
         self.layoutWidget1 = QtGui.QWidget(self.centralwidget)
-        self.layoutWidget1.setGeometry(QtCore.QRect(0, 433, 751, 161))
+        self.layoutWidget1.setGeometry(QtCore.QRect(0, 440, 751, 121))
         self.layoutWidget1.setObjectName(_fromUtf8("layoutWidget1"))
         self.horizontalLayout_4 = QtGui.QHBoxLayout(self.layoutWidget1)
         self.horizontalLayout_4.setMargin(0)
@@ -126,6 +126,7 @@ class Ui_MainWindow(object):
         self.menuHelp.setObjectName(_fromUtf8("menuHelp"))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtGui.QStatusBar(MainWindow)
+        self.statusbar.setSizeGripEnabled(False)
         self.statusbar.setObjectName(_fromUtf8("statusbar"))
         MainWindow.setStatusBar(self.statusbar)
         self.actionClose = QtGui.QAction(MainWindow)
