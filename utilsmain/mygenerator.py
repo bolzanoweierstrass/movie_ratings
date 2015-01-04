@@ -4,9 +4,10 @@ class Common(object):
     def __init__(self):
         self._url = 'http://omdbapi.com/'
         self.payload = {'r':'json','plot':'short','tomatoes':'true'}
-    def getDataByTitle(self,title):
+    def getDataByTitle(self,title,plot="short"):
         try:
             if self.payload.has_key('s'):del self.payload['s']
+            if plot == "long": self.payload.update({'plot':'full'})
         finally:
             self.payload.update({'t':title})
             req = requests.get(self._url, params = self.payload)

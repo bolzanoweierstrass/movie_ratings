@@ -26,9 +26,10 @@ class Downloader(QtGui.QMainWindow):
     
     def getData(self):
         title = str(self.ui.lne_url.text())
+        plot = str(self.ui.cmb_plot.currentText())
         inp = Common()
         if self.ui.rbtn_title.isChecked():
-            data = inp.getDataByTitle(title)
+            data = inp.getDataByTitle(title,plot)
             return data
         else:
             data = inp.getDataBySearch(title)
@@ -45,8 +46,9 @@ class Downloader(QtGui.QMainWindow):
         else:
             sdata = data.get('Search')
             for i in range(len(sdata)):
-                for k,v in sdata[i].items():
-                    self.ui.txb_title.append(k + " = " + sdata[i][k])
+#                 for k,v in sdata[i].items():
+                self.ui.txb_title.append("Title = " + sdata[i]['Title'] + "\t" + "Year = " + sdata[i]['Year'])
+#                     self.ui.txb_title.append(k + " = " + sdata[i][k])
         
     
     def openAbout(self):
