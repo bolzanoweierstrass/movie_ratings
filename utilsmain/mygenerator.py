@@ -1,5 +1,4 @@
 import requests
-
 class Common(object):
     def __init__(self):
         self._url = 'http://omdbapi.com/'
@@ -22,18 +21,23 @@ class Common(object):
             data = req.json()
             return data
 
-# class Tettikai(object):
-#     def __init__(self):
-#         pass
-#     @classmethod
-#     def setPicture(self,js_data):
-#         poster = js_data['Poster']
-#         req = requests.get(poster,stream=True)
-#         im = Image.open(BytesIO(req.content))
-#         return im
-       
+class Tettikai(object):
+    def __init__(self):
+        pass
+    def getIm(self,dada):
+        if dada.has_key('Poster'):
+            poster = dada['Poster']
+            localfile = '/tmp'+'/'+ poster.split('/')[-1]
+            req = requests.get(poster, stream=True)
+            with open(localfile, 'w+b') as infile:
+                for chunk in req.iter_content(2*1024):
+                    if chunk:
+                        infile.write(chunk)
+                        infile.flush()
+            return localfile
+        else:
+            pass
                 
-        
             
             
         

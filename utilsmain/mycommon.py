@@ -7,7 +7,7 @@ Created on Jan 1, 2015
 from guimain.mainWindow import Ui_MainWindow
 from guimain import myAbout
 from PyQt4 import QtGui
-from utilsmain.mygenerator import  Common
+from utilsmain.mygenerator import  Common, Tettikai
 
 class Downloader(QtGui.QMainWindow):
 
@@ -25,16 +25,28 @@ class Downloader(QtGui.QMainWindow):
         
     
     def getData(self):
+        
         title = str(self.ui.lne_url.text())
         plot = str(self.ui.cmb_plot.currentText())
         inp = Common()
         if self.ui.rbtn_title.isChecked():
-            data = inp.getDataByTitle(title,plot)
-            return data
+            if not title is "":
+                data = inp.getDataByTitle(title,plot)
+                return data
+            else:
+                QtGui.QMessageBox.warning(self, "error", "please enter the keyboard")
         else:
             data = inp.getDataBySearch(title)
             return data
-   
+    def showImage(self):
+        myim = Tettikai().getIm(self.getData())
+        mypix = QtGui.QPixmap(myim)
+        if not mypix.isNull():
+            myscaled = mypix.scaled(self.ui.lbl_pic.size())
+            self.ui.lbl_pic.setPixmap(myscaled)
+        else:
+            self.ui.lbl_pic.setText("sorry for the inconvinence")
+                
     def onBtnClicked(self):
         self.ui.txb_title.clear()
         data = self.getData()
@@ -43,12 +55,17 @@ class Downloader(QtGui.QMainWindow):
             for i in range(0,len(mylist)):
                 self.ui.txb_title.append(mylist[i] + "=" + data[mylist[i]])
             self.ui.txtb_plot.setText(data['Plot'])
+            self.showImage()
         else:
-            sdata = data.get('Search')
-            for i in range(len(sdata)):
-#                 for k,v in sdata[i].items():
-                self.ui.txb_title.append("Title = " + sdata[i]['Title'] + "\t" + "Year = " + sdata[i]['Year'])
-#                     self.ui.txb_title.append(k + " = " + sdata[i][k])
+            if data.has_key('Search'):
+                data = data['Search']
+                self.ui.txtb_plot.clear()
+                for i in range(len(data)):
+                    self.ui.txb_title.append("Title = " + data[i]['Title'] + "\t" + "Year = " + data[i]['Year'])
+            else:
+                QtGui.QMessageBox.warning(self, "error", "i don't know yet")
+          
+                
         
     
     def openAbout(self):
